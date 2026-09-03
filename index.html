@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aidstra | PackingAid First Aid Kits</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --navy: #123B63;
+    --blue: #1769AA;
+    --sky: #EAF5FF;
+    --light: #F7FBFF;
+    --text: #17324D;
+    --muted: #60758A;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255,255,255,0.96);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    box-shadow: 0 2px 15px rgba(18,59,99,0.10);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--navy);
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--blue);
+}
+
+.hero {
+    padding: 95px 7%;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 55px;
+    align-items: center;
+    background: linear-gradient(135deg, #EAF5FF, #D8ECFF);
+}
+
+.hero small {
+    color: var(--blue);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1.02;
+    margin: 15px 0 10px;
+    color: var(--navy);
+}
+
+.motto {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 600px;
+    color: var(--muted);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    padding: 13px 23px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 22px;
+    transition: .2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    background: var(--navy);
+}
+
+.mock {
+    height: 350px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 55px rgba(23,105,170,.18);
+}
+
+.pouch {
+    width: 285px;
+    height: 215px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #2378B8, #125486);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 28px;
+    box-shadow: 0 18px 30px rgba(18,59,99,.25);
+    transform: rotate(-3deg);
+}
+
+section {
+    padding: 75px 7%;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 38px;
+    color: var(--navy);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.about-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #DCEAF6;
+    box-shadow: 0 7px 25px rgba(18,59,99,.07);
+}
+
+.about-card h3 {
+    color: var(--navy);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.about-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+.about-card li {
+    margin-bottom: 12px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 23px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #DCEAF6;
+    box-shadow: 0 7px 25px rgba(18,59,99,.07);
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(18,59,99,.13);
+}
+
+.icon {
+    font-size: 42px;
+}
+
+.card h3 {
+    margin: 13px 0 8px;
+    color: var(--navy);
+    font-size: 22px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+.price {
+    font-weight: 800;
+    font-size: 21px;
+    color: var(--blue);
+    margin-top: 17px;
+}
+
+.values {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.value {
+    padding: 24px 15px;
+    background: var(--sky);
+    border-radius: 18px;
+    text-align: center;
+}
+
+.value h3 {
+    color: var(--navy);
+    font-size: 18px;
+}
+
+.order {
+    text-align: center;
+    background: var(--navy);
+    color: white;
+}
+
+.order h2 {
+    color: white;
+}
+
+.order p {
+    max-width: 650px;
+    margin: auto;
+    color: #D9E9F7;
+}
+
+.order .btn {
+    background: white;
+    color: var(--blue);
+    margin-right: 8px;
+}
+
+.order .btn:hover {
+    background: #EAF5FF;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #0B2944;
+    color: #DCEAF6;
+    font-size: 14px;
+}
+
+@media (max-width: 900px) {
+    .values {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 750px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 60px;
+    }
+
+    .about-grid,
+    .cards,
+    .values {
+        grid-template-columns: 1fr;
+    }
+
+    nav div:last-child {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .mock {
+        height: 270px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">
+        Aid<span>stra</span> 🩹
+    </div>
+
+    <div>
+        <a href="#about">About Us</a>
+        <a href="#values">Core Values</a>
+        <a href="#kits">PackingAid Kits</a>
+        <a href="#guide">Guide</a>
+        <a href="#order">Order</a>
+    </div>
+</nav>
+
+
+<header class="hero">
+
+    <div>
+        <small>AIDSTRA PRESENTS</small>
+
+        <h1>
+            PackingAid.<br>
+            Portable First Aid Kits.
+        </h1>
+
+        <div class="motto">"Pack Smart. Stay Safe."</div>
+
+        <p>
+            PackingAid provides compact, ready-to-go first aid kits equipped 
+            with easy-to-follow emergency guides for immediate response anywhere.
+        </p>
+
+        <a class="btn" href="#kits">
+            Explore PackingAid
+        </a>
+    </div>
+
+    <div class="mock">
+        <div class="pouch">
+            PACKINGAID
+        </div>
+    </div>
+
+</header>
+
+
+<section id="about">
+
+    <h2>About Aidstra</h2>
+
+    <div class="about-grid">
+        <div class="about-card">
+            <h3>👁️ Vision</h3>
+            <ul>
+                <li>A ready-to-go first aid kit business provides accessible, pre-packaged emergency medical supplies, focusing on compact design, clear labeling, and targeted utility.</li>
+                <li>Our vision is to provide portable, waterproof first aid kits equipped with flyers for immediate emergency response, ensuring everyone is ready for sudden disasters anywhere.</li>
+            </ul>
+        </div>
+
+        <div class="about-card">
+            <h3>🎯 Mission</h3>
+            <ul>
+                <li>Our mission is to educate and empower people by providing accessible first-aid kits with easy-to-follow emergency guides. We aim to help individuals respond calmly and correctly during emergencies such as asthma, panic attacks, faintings, and other common health situation problems.</li>
+                <li>Our first aid kits (PackingAid) are designed with different variants to meet the needs of different age groups and audiences, such as children, teenagers, adults, the elderly; travelers, students, disabled people, etc.</li>
+                <li>We raise to promote safety and preparedness in communities—in all situations.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="about-card" style="max-width: 100%;">
+        <h3>📌 Objectives</h3>
+        <ul>
+            <li>Develop first aid kits for different target markets such as students, travelers, athletes, adults, children, and families.</li>
+            <li>Offer affordable safety and first-aid products without compromising quality and reliability.</li>
+            <li>Increase awareness of the importance of carrying a first-aid kit everywhere through marketing and educational campaigns.</li>
+        </ul>
+    </div>
+
+</section>
+
+
+<section id="values" style="background: #F0F7FF;">
+
+    <h2>Core Values</h2>
+
+    <div class="values">
+
+        <div class="value">
+            <h3>Preparedness</h3>
+
+	    <p>
+		Being ready before an emergency happens. At PackingAid, we believe that having a complete and organized first aid kit allows people to    	        respond quickly and effectively during unexpected situations.
+	    </p>
+        </div>
+
+        <div class="value">
+            <h3>Humanity</h3>
+	    <p>
+		We value compassion, empathy, and the well-being of others by providing products that help people respond to emergencies with care and 			confidence.
+	    </p>
+        </div>
+
+        <div class="value">
+            <h3>Safety</h3>
+	    <p>
+		We are committed to providing reliable, easy-to-follow first aid kits(PackingAid) that help people respond quickly, calmly and correctly  		during emergencies.
+	    </p>
+        </div>
+
+        <div class="value">
+            <h3>Community</h3>
+	    <p>
+		Community means helping and supporting one another by being prepared for emergencies and promoting safety for everyone.
+	    </p>
+        </div>
+
+        <div class="value">
+            <h3>Integrity</h3>
+	    <p> 
+		Being honest about the contents, quality, and purpose of each kit. Integrity is essential because customers depend on Packing aid Portable     		Kits to help them in emergencies and everyday situations
+	    </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="kits">
+
+    <h2>PackingAid Variants</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🎒</div>
+
+            <h3>Student & Teen Kit</h3>
+
+            <p>
+                A compact and portable PackingAid kit tailored for students, 
+                teenagers, and campus emergencies.
+            </p>
+
+            <div class="price">
+                ₱350-₱450
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">🧸</div>
+
+            <h3>Children Kit</h3>
+
+            <p>
+                Specially packaged emergency supplies for kids, paired with 
+                clear guides for parents, teachers, or guardians.
+            </p>
+
+            <div class="price">
+                ₱150-₱200
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">✈️</div>
+
+            <h3>Adult & Family Kit</h3>
+
+            <p>
+                Waterproof, highly durable first-aid setup designed for travelers, 
+                athletes, adults, and elderly care. Perfect for families at home.
+            </p>
+
+            <div class="price">
+                ₱750-₱1,000
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="guide">
+
+    <h2>Emergency Guides Included</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🫁 Asthma & Panic Attacks</h3>
+
+            <p>
+                Clear, step-by-step instructions to help individuals stay calm and 
+                manage sudden breathing or anxiety emergencies. 
+            </p>
+        </div>
+
+
+        <div class="card">
+            <h3>🚨 Fainting & Dizziness</h3>
+
+            <p>
+                Quick actions to secure the person, maintain airflow, and handle 
+                sudden fainting episodes safely.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <h3>🩹 General First Aid</h3>
+
+            <p>
+                Easy-to-read guides for common health issues and minor medical 
+                situations on the go.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="order" class="order">
+
+    <h2>Ready when you need it.</h2>
+
+    <p>
+        Choose your PackingAid kit by Aidstra and connect with us to place 
+        an order or learn more about our products.
+    </p>
+
+    <a
+        class="btn"
+        href="https://facebook.com/"
+        target="_blank"
+    >
+        Facebook
+    </a>
+
+    <a
+        class="btn"
+        href="https://tiktok.com/"
+        target="_blank"
+    >
+        TikTok
+    </a>
+
+</section>
+
+
+<footer>
+    © 2026 Aidstra · Pack Smart. Stay Safe.
+</footer>
+
+</body>
+</html>
