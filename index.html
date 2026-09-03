@@ -3,308 +3,729 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aidstra | PackingAid First Aid Kits</title>
+<title>Aidstra | Next-Gen Emergency Preparedness</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
+:root {
+    --brand-blue: #0052FF;
+    --brand-cyan: #00D2FF;
+    --brand-glow: #00E5FF;
+    --dark-navy: #060B19;
+    --surface-dark: #0D1527;
+    --surface-card: #FFFFFF;
+    --bg-light: #F8FAFC;
+    --text-primary: #0F172A;
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+    --shadow-glow: 0 0 50px rgba(0, 82, 255, 0.18);
+}
+
+/* Global Responsive Safety Net */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-:root {
-    --navy: #123B63;
-    --blue: #1769AA;
-    --sky: #EAF5FF;
-    --light: #F7FBFF;
-    --text: #17324D;
-    --muted: #60758A;
-    --white: #FFFFFF;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--light);
-    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-primary);
     line-height: 1.6;
 }
 
+h1, h2, h3, h4, .logo {
+    font-family: 'Syne', sans-serif;
+}
+
+/* Glass Navigation Bar */
 nav {
     position: sticky;
     top: 0;
-    z-index: 10;
-    background: rgba(255,255,255,0.96);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.7);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 7%;
-    box-shadow: 0 2px 15px rgba(18,59,99,0.10);
+    padding: 18px 8%;
 }
 
 .logo {
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 800;
-    letter-spacing: -1px;
-    color: var(--navy);
+    color: var(--dark-navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.5px;
 }
 
 .logo span {
-    color: var(--blue);
+    color: var(--brand-blue);
+}
+
+.logo-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--brand-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--brand-cyan);
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
 }
 
 nav a {
-    color: var(--text);
+    color: var(--text-primary);
     text-decoration: none;
-    margin-left: 24px;
     font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s ease;
 }
 
 nav a:hover {
-    color: var(--blue);
+    color: var(--brand-blue);
 }
 
+.nav-btn {
+    background: var(--dark-navy);
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 14px rgba(6, 11, 25, 0.15);
+    transition: all 0.2s ease !important;
+}
+
+.nav-btn:hover {
+    background: var(--brand-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 82, 255, 0.3);
+}
+
+/* Hero Section */
 .hero {
-    padding: 95px 7%;
+    position: relative;
+    padding: 140px 8% 120px;
     display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 55px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
     align-items: center;
-    background: linear-gradient(135deg, #EAF5FF, #D8ECFF);
+    background: linear-gradient(180deg, rgba(6, 11, 25, 0.75) 0%, rgba(6, 11, 25, 0.88) 100%), 
+                url('https://i.pinimg.com/736x/ca/76/e0/ca76e0d9a189c03be18a97fa3d59aa01.jpg') center/cover no-repeat;
+    color: white;
 }
 
-.hero small {
-    color: var(--blue);
-    font-weight: 800;
-    letter-spacing: 2px;
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 210, 255, 0.12);
+    color: var(--brand-cyan);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .hero h1 {
-    font-size: clamp(45px, 6vw, 75px);
-    line-height: 1.02;
-    margin: 15px 0 10px;
-    color: var(--navy);
+    font-size: clamp(40px, 6vw, 78px);
+    line-height: 1.05;
+    color: #FFFFFF;
+    margin-bottom: 18px;
+    letter-spacing: -1.5px;
 }
 
-.motto {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--blue);
-    margin-bottom: 15px;
-    letter-spacing: 0.5px;
+.motto-tag {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #00D2FF, #00E5FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
 }
 
 .hero p {
     font-size: 18px;
-    max-width: 600px;
-    color: var(--muted);
+    color: #94A3B8;
+    max-width: 560px;
+    margin-bottom: 36px;
+    font-weight: 450;
 }
 
-.btn {
-    display: inline-block;
-    background: var(--blue);
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0052FF 0%, #003ECC 100%);
     color: white;
-    padding: 13px 23px;
-    border-radius: 10px;
+    padding: 18px 36px;
+    border-radius: var(--radius-md);
     text-decoration: none;
     font-weight: 700;
-    margin-top: 22px;
-    transition: .2s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    background: var(--navy);
-}
-
-.mock {
-    height: 350px;
-    border-radius: 30px;
-    background: rgba(255,255,255,.65);
-    display: flex;
+    font-size: 16px;
+    box-shadow: 0 12px 30px rgba(0, 82, 255, 0.4);
+    transition: all 0.3s ease;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 20px 55px rgba(23,105,170,.18);
+    gap: 10px;
+    border: none;
+    cursor: pointer;
 }
 
-.pouch {
-    width: 285px;
-    height: 215px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #2378B8, #125486);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0, 82, 255, 0.6);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
     color: white;
-    font-weight: 800;
-    font-size: 28px;
-    box-shadow: 0 18px 30px rgba(18,59,99,.25);
+    padding: 18px 32px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: white;
+}
+
+/* Medkit Showcase */
+.mock-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 82, 255, 0.45) 0%, rgba(0, 210, 255, 0.2) 70%);
+    filter: blur(80px);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.medkit-box {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 340px;
+    min-height: 260px;
+    background: linear-gradient(145deg, #0A192F 0%, #060D1A 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 28px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
     transform: rotate(-3deg);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(0, 210, 255, 0.4);
 }
 
+.medkit-box:hover {
+    transform: rotate(0deg) scale(1.03);
+    border-color: var(--brand-cyan);
+    box-shadow: 0 40px 80px rgba(0, 82, 255, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.medkit-handle {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 18px;
+    background: #030813;
+    border: 2px solid rgba(0, 210, 255, 0.5);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.medkit-cross {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-cyan) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+    position: relative;
+}
+
+.medkit-cross::before, .medkit-cross::after {
+    content: '';
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 2px;
+}
+
+.medkit-cross::before { width: 22px; height: 6px; }
+.medkit-cross::after { width: 6px; height: 22px; }
+
+.pouch-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pouch-tag {
+    background: rgba(0, 210, 255, 0.15);
+    color: var(--brand-cyan);
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pouch-brand {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 4px;
+    background: linear-gradient(90deg, #FFFFFF, #E2E8F0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pouch-sub {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--brand-cyan);
+    font-weight: 700;
+}
+
+.medkit-latch {
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 40px;
+    background: var(--brand-cyan);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 0 12px var(--brand-cyan);
+}
+
+/* Common Sections */
 section {
-    padding: 75px 7%;
+    padding: 100px 8%;
 }
 
-section h2 {
+.section-header {
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 38px;
-    color: var(--navy);
+    max-width: 680px;
+    margin: 0 auto 60px;
 }
 
+.section-header h2 {
+    font-size: 42px;
+    color: var(--dark-navy);
+    margin-bottom: 14px;
+    letter-spacing: -1px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 17px;
+}
+
+/* About Grid */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 32px;
+    margin-bottom: 32px;
 }
 
-.about-card {
+.glass-card {
     background: white;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid #DCEAF6;
-    box-shadow: 0 7px 25px rgba(18,59,99,.07);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.about-card h3 {
-    color: var(--navy);
-    font-size: 24px;
-    margin-bottom: 15px;
+.glass-card:hover {
+    border-color: rgba(0, 82, 255, 0.3);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
 }
 
-.about-card ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    color: var(--muted);
+.icon-box {
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 82, 255, 0.08);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 24px;
 }
 
-.about-card li {
-    margin-bottom: 12px;
+.glass-card h3 {
+    font-size: 26px;
+    color: var(--dark-navy);
+    margin-bottom: 18px;
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 23px;
+.glass-card ul { list-style: none; }
+
+.glass-card li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 16px;
+    color: var(--text-muted);
+    font-size: 15px;
 }
 
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid #DCEAF6;
-    box-shadow: 0 7px 25px rgba(18,59,99,.07);
-    transition: .2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(18,59,99,.13);
-}
-
-.icon {
-    font-size: 42px;
-}
-
-.card h3 {
-    margin: 13px 0 8px;
-    color: var(--navy);
-    font-size: 22px;
-}
-
-.card p {
-    color: var(--muted);
-}
-
-.price {
+.glass-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--brand-blue);
     font-weight: 800;
-    font-size: 21px;
-    color: var(--blue);
-    margin-top: 17px;
-}
-
-.values {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-}
-
-.value {
-    padding: 24px 15px;
-    background: var(--sky);
-    border-radius: 18px;
-    text-align: center;
-}
-
-.value h3 {
-    color: var(--navy);
     font-size: 18px;
 }
 
-.order {
+/* Core Values Section */
+.values-container {
+    background: linear-gradient(180deg, var(--dark-navy) 0%, var(--surface-dark) 100%);
+    color: white;
+    border-radius: var(--radius-xl);
+    padding: 70px 50px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    overflow: visible;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.value-pill {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 28px 16px;
+    border-radius: var(--radius-md);
     text-align: center;
-    background: var(--navy);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.value-pill:hover {
+    background: rgba(0, 82, 255, 0.2);
+    border-color: var(--brand-cyan);
+    transform: translateY(-5px);
+}
+
+.value-pill h4 {
+    font-size: 18px;
+    margin-top: 12px;
     color: white;
 }
 
-.order h2 {
-    color: white;
+/* Tooltip Styling */
+.value-pill .pill-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    width: 220px;
+    background: rgba(6, 11, 25, 0.95);
+    color: #94A3B8;
+    text-align: center;
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    position: absolute;
+    z-index: 100;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid var(--brand-cyan);
+    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.25);
+    font-size: 13px;
+    line-height: 1.4;
+    pointer-events: none;
 }
 
-.order p {
-    max-width: 650px;
-    margin: auto;
-    color: #D9E9F7;
+.value-pill .pill-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--brand-cyan) transparent transparent transparent;
 }
 
-.order .btn {
+.value-pill:hover .pill-tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Products Section */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.product-card {
     background: white;
-    color: var(--blue);
-    margin-right: 8px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    padding: 36px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
 }
 
-.order .btn:hover {
-    background: #EAF5FF;
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+}
+
+.pop-badge {
+    position: absolute;
+    top: -14px;
+    right: 28px;
+    background: linear-gradient(90deg, #0052FF, #00D2FF);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-card h3 {
+    font-size: 24px;
+    color: var(--dark-navy);
+    margin: 16px 0 10px;
+}
+
+.product-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+.price-tag {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--brand-blue);
+    margin-bottom: 24px;
+}
+
+/* Guide Info Button Styling */
+.btn-guide-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: rgba(0, 82, 255, 0.06);
+    color: var(--brand-blue);
+    border: 1px solid rgba(0, 82, 255, 0.2);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-guide-link:hover {
+    background: var(--brand-blue);
+    color: white;
+    border-color: var(--brand-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 82, 255, 0.25);
+}
+
+/* Order Section */
+.order-section {
+    background: linear-gradient(135deg, rgba(6, 11, 25, 0.40) 0%, rgba(3, 6, 17, 0.65) 100%),
+                url('https://i.pinimg.com/1200x/1f/a1/64/1fa16467cea62fd79c8f56fce48b7514.jpg') center/cover no-repeat;
+    color: white;
+    border-radius: 40px;
+    padding: 80px 6%;
+    margin: 40px 8%;
+    position: relative;
+    border: 1px solid rgba(0, 210, 255, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.order-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.order-form {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 36px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #94A3B8;
+    letter-spacing: 1px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 16px 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-sm);
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--brand-cyan);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.form-group option {
+    background: var(--dark-navy);
+    color: white;
 }
 
 footer {
     text-align: center;
-    padding: 25px;
-    background: #0B2944;
-    color: #DCEAF6;
+    padding: 40px 8%;
+    background: #030611;
+    color: #64748B;
     font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media (max-width: 900px) {
-    .values {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+/* Responsive CSS */
+@media (max-width: 992px) {
+    section { padding: 60px 5%; }
 
-@media (max-width: 750px) {
     .hero {
         grid-template-columns: 1fr;
-        padding-top: 60px;
+        padding: 100px 5% 60px;
+        text-align: center;
+        gap: 40px;
     }
 
-    .about-grid,
-    .cards,
-    .values {
+    .hero p { margin: 0 auto 36px; }
+    .hero-actions { justify-content: center; }
+
+    .about-grid, .products-grid, .order-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
-    nav div:last-child {
-        display: none;
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 
-    .hero h1 {
-        font-size: 50px;
+    .order-section {
+        margin: 20px 4%;
+        padding: 40px 20px;
     }
 
-    .mock {
-        height: 270px;
+    nav .nav-links { display: none; }
+}
+
+@media (max-width: 576px) {
+    .hero h1 { font-size: 34px; }
+    .motto-tag { font-size: 18px; }
+
+    .values-grid { grid-template-columns: 1fr; }
+
+    .value-pill .pill-tooltip {
+        width: 100%;
+        max-width: 250px;
     }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .order-form { padding: 24px 16px; }
+    .section-header h2 { font-size: 28px; }
 }
 </style>
 </head>
@@ -313,261 +734,278 @@ footer {
 
 <nav>
     <div class="logo">
-        Aid<span>stra</span> 🩹
+        AID<span>STRA</span><div class="logo-dot"></div>
     </div>
 
-    <div>
-        <a href="#about">About Us</a>
-        <a href="#values">Core Values</a>
-        <a href="#kits">PackingAid Kits</a>
-        <a href="#guide">Guide</a>
-        <a href="#order">Order</a>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#values">Values</a>
+        <a href="#products">PackingAid</a>
+        <a href="#guides">Guides</a>
+        <a href="#order" class="nav-btn">Order Now ⚡</a>
     </div>
 </nav>
 
-
-<header class="hero">
-
+<header class="hero" id="hero">
     <div>
-        <small>AIDSTRA PRESENTS</small>
-
-        <h1>
-            PackingAid.<br>
-            Portable First Aid Kits.
-        </h1>
-
-        <div class="motto">"Pack Smart. Stay Safe."</div>
-
+        <div class="badge">🚀 AIDSTRA PRESENTS</div>
+        <h1>PackingAid.<br>Portable First Aid Kits.</h1>
+        <div class="motto-tag">"Pack Smart. Stay Safe."</div>
         <p>
-            PackingAid provides compact, ready-to-go first aid kits equipped 
-            with easy-to-follow emergency guides for immediate response anywhere.
+            Redefining personal health safety with compact, portable PackingAid first aid kits engineered with instant emergency guides for everyone, everywhere.
         </p>
-
-        <a class="btn" href="#kits">
-            Explore PackingAid
-        </a>
-    </div>
-
-    <div class="mock">
-        <div class="pouch">
-            PACKINGAID
+        <div class="hero-actions">
+            <a class="btn-primary" href="#products">Explore PackingAid ⚡</a>
+            <a class="btn-secondary" href="#about">Learn More</a>
         </div>
     </div>
 
+    <div class="mock-wrapper">
+        <div class="hero-glow"></div>
+        <div class="medkit-box">
+            <div class="medkit-handle"></div>
+            <div class="medkit-latch"></div>
+            
+            <div class="pouch-top">
+                <span class="pouch-tag">READY-TO-GO</span>
+                <div class="medkit-cross"></div>
+            </div>
+            
+            <div>
+                <div class="pouch-brand">PACKINGAID</div>
+                <div class="pouch-sub">PORTABLE FIRST AID KIT</div>
+            </div>
+        </div>
+    </div>
 </header>
 
-
 <section id="about">
-
-    <h2>About Aidstra</h2>
+    <div class="section-header">
+        <h2>Built For Total Readiness</h2>
+        <p>Making emergency preparedness accessible, reliable, and practical for daily life.</p>
+    </div>
 
     <div class="about-grid">
-        <div class="about-card">
-            <h3>👁️ Vision</h3>
-            <ul>
-                <li>A ready-to-go first aid kit business provides accessible, pre-packaged emergency medical supplies, focusing on compact design, clear labeling, and targeted utility.</li>
-                <li>Our vision is to provide portable, waterproof first aid kits equipped with flyers for immediate emergency response, ensuring everyone is ready for sudden disasters anywhere.</li>
-            </ul>
-        </div>
-
-        <div class="about-card">
-            <h3>🎯 Mission</h3>
-            <ul>
-                <li>Our mission is to educate and empower people by providing accessible first-aid kits with easy-to-follow emergency guides. We aim to help individuals respond calmly and correctly during emergencies such as asthma, panic attacks, faintings, and other common health situation problems.</li>
-                <li>Our first aid kits (PackingAid) are designed with different variants to meet the needs of different age groups and audiences, such as children, teenagers, adults, the elderly; travelers, students, disabled people, etc.</li>
-                <li>We raise to promote safety and preparedness in communities—in all situations.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="about-card" style="max-width: 100%;">
-        <h3>📌 Objectives</h3>
-        <ul>
-            <li>Develop first aid kits for different target markets such as students, travelers, athletes, adults, children, and families.</li>
-            <li>Offer affordable safety and first-aid products without compromising quality and reliability.</li>
-            <li>Increase awareness of the importance of carrying a first-aid kit everywhere through marketing and educational campaigns.</li>
-        </ul>
-    </div>
-
-</section>
-
-
-<section id="values" style="background: #F0F7FF;">
-
-    <h2>Core Values</h2>
-
-    <div class="values">
-
-        <div class="value">
-            <h3>Preparedness</h3>
-
-	    <p>
-		Being ready before an emergency happens. At PackingAid, we believe that having a complete and organized first aid kit allows people to    	        respond quickly and effectively during unexpected situations.
-	    </p>
-        </div>
-
-        <div class="value">
-            <h3>Humanity</h3>
-	    <p>
-		We value compassion, empathy, and the well-being of others by providing products that help people respond to emergencies with care and 			confidence.
-	    </p>
-        </div>
-
-        <div class="value">
-            <h3>Safety</h3>
-	    <p>
-		We are committed to providing reliable, easy-to-follow first aid kits(PackingAid) that help people respond quickly, calmly and correctly  		during emergencies.
-	    </p>
-        </div>
-
-        <div class="value">
-            <h3>Community</h3>
-	    <p>
-		Community means helping and supporting one another by being prepared for emergencies and promoting safety for everyone.
-	    </p>
-        </div>
-
-        <div class="value">
-            <h3>Integrity</h3>
-	    <p> 
-		Being honest about the contents, quality, and purpose of each kit. Integrity is essential because customers depend on Packing aid Portable     		Kits to help them in emergencies and everyday situations
-	    </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="kits">
-
-    <h2>PackingAid Variants</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <div class="icon">🎒</div>
-
-            <h3>Student & Teen Kit</h3>
-
-            <p>
-                A compact and portable PackingAid kit tailored for students, 
-                teenagers, and campus emergencies.
-            </p>
-
-            <div class="price">
-                ₱350-₱450
+        <div class="glass-card">
+            <div>
+                <div class="icon-box">👁️</div>
+                <h3>Our Vision</h3>
+                <ul>
+                    <li>Provide accessible, pre-packaged emergency medical supplies focusing on compact design, clear labeling, and targeted utility.</li>
+                    <li>Deliver portable, waterproof first aid kits equipped with flyers for immediate emergency response, ensuring everyone is ready anywhere.</li>
+                </ul>
             </div>
         </div>
 
+        <div class="glass-card">
+            <div>
+                <div class="icon-box">🎯</div>
+                <h3>Our Mission</h3>
+                <ul>
+                    <li>Educate and empower individuals with easy-to-follow emergency guides for asthma, panic attacks, faintings, and common health issues.</li>
+                    <li>Offer specialized PackingAid kit variants to meet the unique needs of children, teens, adults, the elderly, travelers, students, and disabled individuals.</li>
+                    <li>Promote safety and proactive preparedness in communities across all situations.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-        <div class="card">
-            <div class="icon">🧸</div>
+    <div class="glass-card">
+        <div class="icon-box">📌</div>
+        <h3>Core Objectives</h3>
+        <div class="about-grid" style="margin-bottom:0; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <div><strong>01. Target Markets</strong><br><small style="color:var(--text-muted)">Develop tailored kits for students, travelers, athletes, children, and families.</small></div>
+            <div><strong>02. Quality & Value</strong><br><small style="color:var(--text-muted)">Offer affordable safety products without compromising reliability.</small></div>
+            <div><strong>03. Awareness Campaigns</strong><br><small style="color:var(--text-muted)">Increase carry-everywhere first aid awareness via marketing and education.</small></div>
+        </div>
+    </div>
+</section>
 
-            <h3>Children Kit</h3>
+<section id="values">
+    <div class="values-container">
+        <div class="section-header" style="margin-bottom: 40px;">
+            <h2 style="color:white;">Core Values</h2>
+            <p style="color:#94A3B8;">Hover or tap each value to view details.</p>
+        </div>
 
-            <p>
-                Specially packaged emergency supplies for kids, paired with 
-                clear guides for parents, teachers, or guardians.
-            </p>
+        <div class="values-grid">
+            <div class="value-pill">
+                <div style="font-size: 28px;">🛡️</div>
+                <h4>Preparedness</h4>
+                <div class="pill-tooltip">
+                    <strong style="color:var(--brand-cyan); display:block; margin-bottom:4px;">Preparedness</strong>
+                    Being ready before an emergency happens. At PackingAid, we believe that having a complete and organized first aid kit allows people to 		    respond quickly and effectively during unexpected situations.
+                </div>
+            </div>
 
-            <div class="price">
-                ₱150-₱200
+            <div class="value-pill">
+                <div style="font-size: 28px;">🤝</div>
+                <h4>Humanity</h4>
+                <div class="pill-tooltip">
+                    <strong style="color:var(--brand-cyan); display:block; margin-bottom:4px;">Humanity</strong>
+                    We value compassion, empathy, and the well-being of others by providing products that help people respond to emergencies with care and 		    confidence.
+                </div>
+            </div>
+
+            <div class="value-pill">
+                <div style="font-size: 28px;">🦺</div>
+                <h4>Safety</h4>
+                <div class="pill-tooltip">
+                    <strong style="color:var(--brand-cyan); display:block; margin-bottom:4px;">Safety</strong>
+                    We are committed to providing reliable, easy-to-follow first aid kits(PackingAid) that help people respond quickly, calmly and correctly 		    during emergencies.
+                </div>
+            </div>
+
+            <div class="value-pill">
+                <div style="font-size: 28px;">🌐</div>
+                <h4>Community</h4>
+                <div class="pill-tooltip">
+                    <strong style="color:var(--brand-cyan); display:block; margin-bottom:4px;">Community</strong>
+                    Community means helping and supporting one another by being prepared for emergencies and promoting safety for everyone.
+                </div>
+            </div>
+
+            <div class="value-pill">
+                <div style="font-size: 28px;">⚖️</div>
+                <h4>Integrity</h4>
+                <div class="pill-tooltip">
+                    <strong style="color:var(--brand-cyan); display:block; margin-bottom:4px;">Integrity</strong>
+                    Being honest about the contents, quality, and purpose of each kit.Integrity is essential because customers depend on Packing aid	            	            Portable Kits to help them in emergencies and everyday situations
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="products">
+    <div class="section-header">
+        <h2>PackingAid Variants</h2>
+        <p>Explore our specialized first aid kits built for different needs.</p>
+    </div>
+
+    <div class="products-grid">
+        <div class="product-card">
+            <span class="pop-badge">POPULAR</span>
+            <div>
+                <div style="font-size: 40px;">🎒</div>
+                <h3>Student & Teen Kit</h3>
+                <p>Compact and practical setup designed for students, campus life, and active everyday carry.</p>
+            </div>
+            <div>
+                <div class="price-tag">₱299-399</div>
+                <a class="btn-primary" href="#order" style="width:100%; text-align:center; justify-content:center;">Select Variant</a>
             </div>
         </div>
 
-
-        <div class="card">
-            <div class="icon">✈️</div>
-
-            <h3>Adult & Family Kit</h3>
-
-            <p>
-                Waterproof, highly durable first-aid setup designed for travelers, 
-                athletes, adults, and elderly care. Perfect for families at home.
-            </p>
-
-            <div class="price">
-                ₱750-₱1,000
+        <div class="product-card">
+            <div>
+                <div style="font-size: 40px;">🧸</div>
+                <h3>Children Edition</h3>
+                <p>Child-focused emergency items paired with simple guides for parents, teachers, and guardians.</p>
+            </div>
+            <div>
+                <div class="price-tag">₱149</div>
+                <a class="btn-primary" href="#order" style="width:100%; text-align:center; justify-content:center;">Select Variant</a>
             </div>
         </div>
 
+        <div class="product-card">
+            <div>
+                <div style="font-size: 40px;">✈️</div>
+                <h3>Traveler & Family Kit</h3>
+                <p>Waterproof, multi-purpose kit suited for travelers, adults, athletes, and elderly care.</p>
+            </div>
+            <div>
+                <div class="price-tag">₱699-799</div>
+                <a class="btn-primary" href="#order" style="width:100%; text-align:center; justify-content:center;">Select Variant</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="guides" style="background: white;">
+    <div class="section-header">
+        <h2>Included Emergency Guides</h2>
+        <p>Every PackingAid comes with instant-read guides for rapid response.</p>
     </div>
 
-</section>
-
-
-<section id="guide">
-
-    <h2>Emergency Guides Included</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>🫁 Asthma & Panic Attacks</h3>
-
-            <p>
-                Clear, step-by-step instructions to help individuals stay calm and 
-                manage sudden breathing or anxiety emergencies. 
-            </p>
+    <div class="products-grid">
+        <div class="glass-card">
+            <div>
+                <div style="font-size: 32px; margin-bottom: 12px;">🫁</div>
+                <h3>Asthma & Panic Attacks</h3>
+                <p style="color:var(--text-muted)">Step-by-step calming procedures and breathing assistance instructions during acute stress or asthma issues.</p>
+            </div>
+            <a href="PUT_LINK_HERE" class="btn-guide-link" target="_blank">Click here for more information!</a>
         </div>
 
-
-        <div class="card">
-            <h3>🚨 Fainting & Dizziness</h3>
-
-            <p>
-                Quick actions to secure the person, maintain airflow, and handle 
-                sudden fainting episodes safely.
-            </p>
+        <div class="glass-card">
+            <div>
+                <div style="font-size: 32px; margin-bottom: 12px;">🚨</div>
+                <h3>Fainting & Dizziness</h3>
+                <p style="color:var(--text-muted)">Clear protocols to secure the individual, ensure proper ventilation, and handle fainting episodes safely.</p>
+            </div>
+            <a href="PUT_LINK_HERE" class="btn-guide-link" target="_blank">Click here for more information!</a>
         </div>
 
-
-        <div class="card">
-            <h3>🩹 General First Aid</h3>
-
-            <p>
-                Easy-to-read guides for common health issues and minor medical 
-                situations on the go.
-            </p>
+        <div class="glass-card">
+            <div>
+                <div style="font-size: 32px; margin-bottom: 12px;">🩹</div>
+                <h3>Common Health Issues</h3>
+                <p style="color:var(--text-muted)">Quick-reference guides for minor wounds, basic treatments, and sudden everyday health problems.</p>
+            </div>
+            <a href="PUT_LINK_HERE" class="btn-guide-link" target="_blank">Click here for more information!</a>
         </div>
-
     </div>
-
 </section>
 
+<div class="order-section" id="order">
+    <div class="order-grid">
+        <div>
+            <h2 style="font-size: 38px; margin-bottom: 18px; letter-spacing: -1px;">Get Your PackingAid</h2>
+            <p style="color:#94A3B8; font-size: 16px; margin-bottom: 32px;">
+                Be ready anywhere. Place your order request directly or reach us through our social media platforms.
+            </p>
+            <div style="display:flex; gap: 14px; flex-wrap: wrap;">
+                <a href="https://facebook.com/" target="_blank" class="btn-secondary">Facebook Page</a>
+                <a href="https://tiktok.com/" target="_blank" class="btn-secondary">TikTok Shop</a>
+            </div>
+        </div>
 
-<section id="order" class="order">
-
-    <h2>Ready when you need it.</h2>
-
-    <p>
-        Choose your PackingAid kit by Aidstra and connect with us to place 
-        an order or learn more about our products.
-    </p>
-
-    <a
-        class="btn"
-        href="https://facebook.com/"
-        target="_blank"
-    >
-        Facebook
-    </a>
-
-    <a
-        class="btn"
-        href="https://tiktok.com/"
-        target="_blank"
-    >
-        TikTok
-    </a>
-
-</section>
-
+        <form class="order-form" onsubmit="event.preventDefault(); alert('Order request received! Thank you for choosing Aidstra.');">
+            <div class="form-group">
+                <label>FULL NAME</label>
+                <input type="text" placeholder="e.g. Juan Dela Cruz" required>
+            </div>
+            <div class="form-group">
+                <label>PACKINGAID VARIANT</label>
+                <select required>
+                    <option value="student">Student & Teen Kit</option>
+                    <option value="children">Children Edition</option>
+                    <option value="traveler">Traveler & Family Kit</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>CONTACT / SOCIAL HANDLE</label>
+                <input type="text" placeholder="0917... or @username" required>
+            </div>
+            <button class="btn-primary" style="width: 100%; justify-content: center;">Submit Order Request ⚡</button>
+        </form>
+    </div>
+</div>
 
 <footer>
-    © 2026 Aidstra · Pack Smart. Stay Safe.
+    © 2026 Aidstra · Pack Smart. Stay Safe. All Rights Reserved.
 </footer>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname);
+        }
+        window.scrollTo(0, 0);
+    });
+</script>
 
 </body>
 </html>
