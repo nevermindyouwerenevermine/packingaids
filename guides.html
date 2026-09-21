@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aidstra | PackingAid Medical Guides</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --brand-blue: #0052FF;
+    --brand-cyan: #00D2FF;
+    --brand-glow: #00E5FF;
+    --dark-navy: #060B19;
+    --surface-dark: #0D1527;
+    --surface-card: #FFFFFF;
+    --bg-light: #F8FAFC;
+    --text-primary: #0F172A;
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+    --shadow-glow: 0 0 50px rgba(0, 82, 255, 0.18);
+    --red-bg: #FEF2F2;
+    --red-border: #FCA5A5;
+    --red-text: #991B1B;
+}
+
+/* Global Responsive Safety Net */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: 'Syne', sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+a { text-decoration: none; color: inherit; }
+
+/* Glass Navigation Bar */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--brand-blue);
+}
+
+.logo-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--brand-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--brand-cyan);
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--brand-blue);
+}
+
+.nav-btn {
+    background: var(--dark-navy);
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 14px rgba(6, 11, 25, 0.15);
+    transition: all 0.2s ease !important;
+}
+
+.nav-btn:hover {
+    background: var(--brand-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 82, 255, 0.3);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    padding: 120px 8% 100px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(6, 11, 25, 0.85) 0%, rgba(6, 11, 25, 0.92) 100%), 
+                url('https://i.pinimg.com/736x/ca/76/e0/ca76e0d9a189c03be18a97fa3d59aa01.jpg') center/cover no-repeat;
+    color: white;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 210, 255, 0.12);
+    color: var(--brand-cyan);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5.5vw, 68px);
+    line-height: 1.05;
+    color: #FFFFFF;
+    margin-bottom: 18px;
+    letter-spacing: -1.5px;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg, #00D2FF, #00E5FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #94A3B8;
+    max-width: 580px;
+    margin-bottom: 36px;
+    font-weight: 450;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0052FF 0%, #003ECC 100%);
+    color: white;
+    padding: 16px 32px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 12px 30px rgba(0, 82, 255, 0.4);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0, 82, 255, 0.6);
+}
+
+/* Medkit Showcase / Device Mockup */
+.mock-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 82, 255, 0.45) 0%, rgba(0, 210, 255, 0.2) 70%);
+    filter: blur(80px);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.medkit-box {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 340px;
+    background: linear-gradient(145deg, #0A192F 0%, #060D1A 100%);
+    backdrop-filter: blur(20px);
+    border-radius: 28px;
+    padding: 28px;
+    color: white;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    transform: rotate(-3deg);
+    transition: all 0.5s ease;
+    border: 2px solid rgba(0, 210, 255, 0.4);
+}
+
+.medkit-box:hover {
+    transform: rotate(0deg) scale(1.03);
+    border-color: var(--brand-cyan);
+}
+
+.device-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.device-brand {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--brand-cyan);
+}
+
+.device-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #00E5FF;
+    box-shadow: 0 0 10px #00E5FF;
+}
+
+.device-card {
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 15px;
+}
+
+.device-line {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 99px;
+    margin: 10px 0;
+}
+
+.device-line.short { width: 60%; }
+
+/* Sections */
+section { padding: 90px 8%; }
+
+.section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 50px;
+}
+
+.section-header h2 {
+    font-size: 38px;
+    color: var(--dark-navy);
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* Selector Grid */
+.selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+}
+
+.guide-choice {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.guide-choice:hover, .guide-choice.active {
+    transform: translateY(-4px);
+    border-color: var(--brand-blue);
+    box-shadow: var(--shadow-glow);
+}
+
+.guide-choice.active {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F0F6FF 100%);
+}
+
+.choice-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.guide-choice h3 {
+    font-size: 18px;
+    color: var(--dark-navy);
+    margin-bottom: 6px;
+}
+
+.guide-choice p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Guide App Container */
+.guide-app {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.guide-shell {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 20px 40px rgba(6, 11, 25, 0.06);
+    overflow: hidden;
+}
+
+.guide-head {
+    padding: 30px;
+    background: linear-gradient(135deg, #060B19 0%, #0D1527 100%);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+.guide-head h3 {
+    font-size: 26px;
+    color: white;
+}
+
+.guide-head p {
+    color: #94A3B8;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.status-badge {
+    background: rgba(0, 210, 255, 0.15);
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    color: var(--brand-cyan);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* Progress Bar */
+.progress-wrap {
+    padding: 24px 30px 10px;
+    background: #F8FAFC;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.progress {
+    height: 8px;
+    background: #E2E8F0;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(90deg, var(--brand-blue), var(--brand-cyan));
+    border-radius: 99px;
+    transition: width 0.4s ease;
+}
+
+/* Step Content */
+.steps { padding: 36px 30px; }
+
+.step { display: none; animation: fadeIn 0.3s ease; }
+.step.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-number {
+    color: var(--brand-blue);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.step h4 {
+    font-size: 26px;
+    color: var(--dark-navy);
+    margin: 6px 0 12px;
+}
+
+.step-intro {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.info-card {
+    padding: 20px;
+    border-radius: var(--radius-md);
+    background: #F8FAFC;
+    border: 1px solid var(--border-color);
+}
+
+.info-card h5 {
+    font-size: 16px;
+    color: var(--dark-navy);
+    margin-bottom: 6px;
+}
+
+.info-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.alert-box {
+    margin-top: 20px;
+    padding: 18px 20px;
+    background: var(--red-bg);
+    border: 1px solid var(--red-border);
+    border-radius: var(--radius-md);
+    color: var(--red-text);
+    font-size: 14px;
+}
+
+.tip-box {
+    background: rgba(0, 82, 255, 0.05);
+    border-left: 4px solid var(--brand-blue);
+    padding: 16px 20px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.steps-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-sec {
+    background: #F1F5F9;
+    color: var(--dark-navy);
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.btn-sec:hover:not(:disabled) {
+    background: #E2E8F0;
+}
+
+.btn-sec:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Emergency Callout Banner */
+.emergency-banner {
+    max-width: 1100px;
+    margin: 32px auto 0;
+    background: linear-gradient(135deg, var(--dark-navy) 0%, var(--surface-dark) 100%);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+}
+
+.emergency-icon { font-size: 36px; }
+.emergency-banner h4 { font-size: 20px; color: white; margin-bottom: 4px; }
+.emergency-banner p { color: #94A3B8; font-size: 14px; }
+
+/* Quick Facts / How To */
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.fact-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.fact-card .number {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--brand-blue);
+}
+
+.fact-card strong {
+    display: block;
+    font-size: 18px;
+    color: var(--dark-navy);
+    margin: 8px 0 6px;
+}
+
+.fact-card span {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Disclaimer */
+.disclaimer-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+footer {
+    text-align: center;
+    padding: 40px 8%;
+    background: #030611;
+    color: #64748B;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    section { padding: 60px 5%; }
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 5% 60px;
+        text-align: center;
+        gap: 40px;
+    }
+    .hero p { margin: 0 auto 36px; }
+    .selector { grid-template-columns: repeat(2, 1fr); }
+    .info-grid { grid-template-columns: 1fr; }
+    .facts-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+}
+
+@media (max-width: 576px) {
+    .selector { grid-template-columns: 1fr; }
+    .guide-head { flex-direction: column; align-items: flex-start; }
+    .emergency-banner { flex-direction: column; text-align: center; }
+    .steps { padding: 24px 18px; }
+    .hero h1 { font-size: 36px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Glass Navigation Bar -->
+<nav>
+    <div class="logo">
+        AID<span>STRA</span><div class="logo-dot"></div>
+    </div>
+
+    <div class="nav-links">
+        <a href="#guides">Guides</a>
+        <a href="#how">How It Works</a>
+        <a href="#disclaimer">Disclaimer</a>
+        <a class="nav-btn" href="https://nevermindyouwerenevermine.github.io/packingaids/" target="_blank">Main Website ⚡</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero">
+    <div>
+        <div class="badge">🩹 PACKINGAID MEDICAL GUIDES</div>
+        <h1>Know what to do.<br><span>Stay prepared.</span></h1>
+        <p>
+            A digital companion to the emergency guides included in PackingAid kits. Choose a situation below and go through a simple, step-by-step interactive reference.
+        </p>
+        <a class="btn-primary" href="#guides">Explore Guides ⚡</a>
+    </div>
+
+    <div class="mock-wrapper">
+        <div class="hero-glow"></div>
+        <div class="medkit-box">
+            <div class="device-top">
+                <span class="device-brand">PACKINGAID</span>
+                <div class="device-dot"></div>
+            </div>
+            <div style="font-size: 40px; margin-bottom: 10px;">🩺</div>
+            <div class="device-line"></div>
+            <div class="device-line short"></div>
+            <div class="device-card">
+                <strong style="color:var(--brand-cyan); font-size: 13px; display:block; margin-bottom: 4px;">QUICK REFERENCE</strong>
+                <div class="device-line"></div>
+                <div class="device-line short"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Guides Section -->
+<section id="guides">
+    <div class="section-header">
+        <h2>Choose an Emergency Guide</h2>
+        <p>Select a topic to open an interactive quick-reference guide written for general education and preparedness.</p>
+    </div>
+
+    <div class="selector">
+        <button class="guide-choice active" data-guide="asthma">
+            <div class="choice-icon">🫁</div>
+            <h3>Asthma & Breathing</h3>
+            <p>Recognize warning signs and know when help is needed.</p>
+        </button>
+
+        <button class="guide-choice" data-guide="panic">
+            <div class="choice-icon">💙</div>
+            <h3>Panic Attacks</h3>
+            <p>Support someone calmly and recognize concerning symptoms.</p>
+        </button>
+
+        <button class="guide-choice" data-guide="fainting">
+            <div class="choice-icon">⚠️</div>
+            <h3>Fainting & Dizziness</h3>
+            <p>Keep someone safe and recognize when to seek care.</p>
+        </button>
+
+        <button class="guide-choice" data-guide="injuries">
+            <div class="choice-icon">🩹</div>
+            <h3>Minor Injuries</h3>
+            <p>Basic information for common everyday injuries.</p>
+        </button>
+    </div>
+
+    <div class="guide-app">
+        <div class="guide-shell">
+            <div class="guide-head">
+                <div>
+                    <h3 id="guideTitle">🫁 Asthma & Breathing Concerns</h3>
+                    <p id="guideSubtitle">A quick-reference educational guide</p>
+                </div>
+                <div class="status-badge">GUIDE MODE</div>
+            </div>
+
+            <div class="progress-wrap">
+                <div class="progress-label">
+                    <span id="progressText">Step 1 of 4</span>
+                    <span id="progressName">Recognize</span>
+                </div>
+                <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+            </div>
+
+            <div class="steps" id="stepContainer"></div>
+        </div>
+    </div>
+
+    <div class="emergency-banner">
+        <div class="emergency-icon">🚨</div>
+        <div>
+            <h4>Emergency First!</h4>
+            <p>
+                If someone is severely struggling to breathe, is unresponsive, has severe chest pain, has a serious injury, or is rapidly getting worse, seek professional medical help or contact local emergency services immediately.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- How To Use -->
+<section id="how" style="background: white;">
+    <div class="section-header">
+        <h2>How to Use This Guide</h2>
+        <p>Designed to feel like a digital version of the quick-reference cards inside your PackingAid kit.</p>
+    </div>
+
+    <div class="facts-grid">
+        <div class="fact-card">
+            <div class="number">01</div>
+            <strong>Choose</strong>
+            <span>Select the situation that matches what you need to learn about.</span>
+        </div>
+        <div class="fact-card">
+            <div class="number">02</div>
+            <strong>Learn</strong>
+            <span>Move through the short guide one step at a time.</span>
+        </div>
+        <div class="fact-card">
+            <div class="number">03</div>
+            <strong>Know When to Get Help</strong>
+            <span>Always check warning signs before deciding what to do next.</span>
+        </div>
+    </div>
+</section>
+
+<!-- Disclaimer -->
+<section id="disclaimer">
+    <div class="section-header">
+        <h2>Important Reminder</h2>
+    </div>
+    <div class="disclaimer-card">
+        These guides are for general educational and preparedness purposes only. They are not a substitute for professional medical advice, diagnosis, or treatment. If you are unsure about a situation or if it is serious, worsening, or life-threatening, seek professional medical help or contact your local emergency services.
+    </div>
+</section>
+
+<footer>
+    © 2026 Aidstra · Pack Care. Stay Prepared. All Rights Reserved.
+</footer>
+
+<script>
+const guides = {
+  asthma:{
+    title:"🫁 Asthma & Breathing Concerns",
+    subtitle:"A quick-reference educational guide",
+    steps:[
+      {
+        name:"Recognize",
+        title:"1. What should you notice?",
+        intro:"Breathing problems can have different causes. Pay attention to changes that are unusual for the person.",
+        cards:[
+          ["Common signs","Coughing, wheezing, chest tightness, or difficulty speaking normally may occur during breathing problems."],
+          ["Important","Symptoms can vary between people. Do not assume every breathing problem is asthma."]
+        ]
+      },
+      {
+        name:"Stay safe",
+        title:"2. Keep the situation calm",
+        intro:"Help the person stay in a comfortable position and avoid unnecessary activity while you assess what is happening.",
+        cards:[
+          ["Support","Stay calm, speak clearly, and give the person space to breathe comfortably."],
+          ["Existing plan","If they have their own prescribed rescue medicine or action plan, follow the instructions they were given by their healthcare professional."]
+        ]
+      },
+      {
+        name:"Avoid",
+        title:"3. What should you avoid?",
+        intro:"Some actions can create additional risk or delay appropriate care.",
+        cards:[
+          ["Do not share medication","Never give someone another person's prescription or rescue medication."],
+          ["Do not delay help","If breathing difficulty is severe or getting worse, do not wait for the symptoms to pass."]
+        ]
+      },
+      {
+        name:"Get help",
+        title:"4. When is urgent help needed?",
+        intro:"Get urgent medical attention when breathing difficulty is severe, worsening, or accompanied by serious warning signs.",
+        cards:[
+          ["Warning signs","Severe difficulty breathing, inability to speak normally because of breathing difficulty, unusual confusion or weakness, or rapid worsening."],
+          ["Next step","Seek professional medical care or contact local emergency services when the situation is severe or life-threatening."]
+        ],
+        alert:true
+      }
+    ]
+  },
+
+  panic:{
+    title:"💙 Panic Attacks",
+    subtitle:"A calm, supportive quick-reference guide",
+    steps:[
+      {
+        name:"Recognize",
+        title:"1. What can it feel like?",
+        intro:"A panic response can feel intense and may include physical symptoms.",
+        cards:[
+          ["Possible signs","Sudden intense fear or distress, racing heartbeat, shaking, sweating, dizziness, or uncomfortable breathing."],
+          ["Remember","These symptoms can overlap with other health problems, so do not automatically assume that every episode is a panic attack."]
+        ]
+      },
+      {
+        name:"Support",
+        title:"2. How can you support someone?",
+        intro:"A calm environment can make it easier for someone to focus and communicate.",
+        cards:[
+          ["Stay calm","If it is safe, stay nearby and speak in a calm, reassuring way."],
+          ["Reduce stimulation","Move away from unnecessary noise or crowds when possible and encourage comfortable, steady breathing."]
+        ]
+      },
+      {
+        name:"Avoid",
+        title:"3. What should you avoid?",
+        intro:"The way you respond matters.",
+        cards:[
+          ["Do not shame them","Avoid mocking, blaming, or telling the person to simply 'get over it'."],
+          ["Do not assume","If symptoms are unfamiliar, severe, or concerning, consider that another medical issue may be involved."]
+        ]
+      },
+      {
+        name:"Get help",
+        title:"4. When should you seek help?",
+        intro:"Professional help is appropriate when symptoms are severe, unfamiliar, persistent, or worsening.",
+        cards:[
+          ["Warning signs","Severe or unusual symptoms, symptoms that do not improve, or symptoms that raise concern for another medical cause."],
+          ["Next step","Seek professional medical advice, especially when you are unsure what is causing the symptoms."]
+        ],
+        alert:true
+      }
+    ]
+  },
+
+  fainting:{
+    title:"⚠️ Fainting & Dizziness",
+    subtitle:"A safety-focused quick-reference guide",
+    steps:[
+      {
+        name:"Recognize",
+        title:"1. What is happening?",
+        intro:"Dizziness and fainting are not the same thing, but both can create a risk of falling or injury.",
+        cards:[
+          ["Dizziness","A person may feel lightheaded, weak, unsteady, or as if they might faint."],
+          ["Fainting","Fainting is a temporary loss of consciousness."]
+        ]
+      },
+      {
+        name:"Stay safe",
+        title:"2. Keep the person safe",
+        intro:"The first priority is preventing another fall or injury.",
+        cards:[
+          ["If dizzy","Help the person remain in a safe position and avoid walking around while very dizzy."],
+          ["If fainted","Keep the area safe and monitor the person while appropriate help is being arranged."]
+        ]
+      },
+      {
+        name:"Avoid",
+        title:"3. What should you avoid?",
+        intro:"Do not give things by mouth when someone is not fully alert.",
+        cards:[
+          ["Do not force food or drink","Do not give food, drink, or medication to someone who is unconscious or not fully alert."],
+          ["Do not leave them alone","If they have not recovered normally, keep monitoring them and get appropriate help."]
+        ]
+      },
+      {
+        name:"Get help",
+        title:"4. When is urgent help needed?",
+        intro:"Some situations require urgent professional assessment.",
+        cards:[
+          ["Warning signs","Serious injury, breathing difficulty, chest pain, seizure-like activity, prolonged unresponsiveness, confusion, or repeated episodes."],
+          ["Next step","Seek urgent medical attention when these warning signs are present."]
+        ],
+        alert:true
+      }
+    ]
+  },
+
+  injuries:{
+    title:"🩹 Common Minor Injuries",
+    subtitle:"A basic everyday first-aid reference",
+    steps:[
+      {
+        name:"Recognize",
+        title:"1. Is it actually minor?",
+        intro:"Before using basic first-aid supplies, consider the size, location, and severity of the injury.",
+        cards:[
+          ["Examples","Small scrapes or superficial cuts can sometimes be managed with basic first-aid supplies."],
+          ["Be cautious","An injury that looks severe, is very painful, or affects an important body area may need professional assessment."]
+        ]
+      },
+      {
+        name:"Basic care",
+        title:"2. Keep it clean and protected",
+        intro:"Use appropriate first-aid supplies according to their product labels and intended use.",
+        cards:[
+          ["For minor bleeding","Use clean material and gentle pressure while monitoring the situation."],
+          ["Keep supplies clean","Use clean materials and avoid putting dirty items on an injury."]
+        ]
+      },
+      {
+        name:"Avoid",
+        title:"3. What should you avoid?",
+        intro:"Do not make a minor injury harder to manage.",
+        cards:[
+          ["Avoid contamination","Do not use dirty materials on an injury."],
+          ["Do not ignore severity","If the injury is getting worse or appears more serious than expected, seek professional help."]
+        ]
+      },
+      {
+        name:"Get help",
+        title:"4. When should you seek care?",
+        intro:"Get professional medical attention when the injury is beyond basic first aid.",
+        cards:[
+          ["Warning signs","Heavy or persistent bleeding, deep or large wounds, serious burns, signs of infection, significant injury, or uncertainty about what to do."],
+          ["Next step","When in doubt, seek advice from a qualified healthcare professional."]
+        ],
+        alert:true
+      }
+    ]
+  }
+};
+
+let currentGuide="asthma";
+let currentStep=0;
+
+function renderGuide(){
+ const g=guides[currentGuide], step=g.steps[currentStep];
+ document.getElementById("guideTitle").textContent=g.title;
+ document.getElementById("guideSubtitle").textContent=g.subtitle;
+ document.getElementById("progressText").textContent=`Step ${currentStep+1} of ${g.steps.length}`;
+ document.getElementById("progressName").textContent=step.name;
+ document.getElementById("progressBar").style.width=((currentStep+1)/g.steps.length*100)+"%";
+
+ let cards=step.cards.map(c=>`
+   <div class="info-card">
+     <h5>${c[0]}</h5><p>${c[1]}</p>
+   </div>`).join("");
+
+ let alert=step.alert?`
+   <div class="alert-box">
+     <strong>🚨 Emergency reminder:</strong> If the situation is severe, rapidly worsening, or life-threatening, seek professional medical help or contact local emergency services immediately.
+   </div>`:"";
+
+ document.getElementById("stepContainer").innerHTML=`
+   <div class="step active">
+     <div class="step-number">${step.name}</div>
+     <h4>${step.title}</h4>
+     <p class="step-intro">${step.intro}</p>
+     <div class="info-grid">${cards}</div>
+     ${alert}
+     <div class="tip-box"><strong>💡 PackingAid Tip:</strong> The goal of this guide is to help you recognize a situation and know when professional help is needed—not to replace a healthcare professional.</div>
+     <div class="steps-nav">
+       <button class="btn-sec" onclick="prevStep()" ${currentStep===0?"disabled":""}>← Back</button>
+       <button class="btn-primary" onclick="nextStep()">${currentStep===g.steps.length-1?"Start Again 🔄":"Next Step →"}</button>
+     </div>
+   </div>`;
+}
+
+function nextStep(){
+ const total=guides[currentGuide].steps.length;
+ if(currentStep<total-1){currentStep++;renderGuide();}
+ else{currentStep=0;renderGuide();}
+}
+function prevStep(){
+ if(currentStep>0){currentStep--;renderGuide();}
+}
+document.querySelectorAll(".guide-choice").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+   document.querySelectorAll(".guide-choice").forEach(x=>x.classList.remove("active"));
+   btn.classList.add("active");
+   currentGuide=btn.dataset.guide;
+   currentStep=0;
+   renderGuide();
+   document.querySelector(".guide-app").scrollIntoView({behavior:"smooth",block:"start"});
+ });
+});
+renderGuide();
+</script>
+</body>
+</html>
